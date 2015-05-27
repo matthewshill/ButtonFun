@@ -27,8 +27,8 @@
     int cols = SCREEN_WIDTH / SQUARE_SIZE;
     int rows = SCREEN_HEIGHT / SQUARE_SIZE;
     
-    for (int y = 0; y < rows; y++) {
-        for (int x = 0; x < cols; x++) {
+    for (int y = 0; y <= rows; y++) {
+        for (int x = 0; x <= cols; x++) {
             [self makeSquareWithX:x andY:y];
         }
     }
@@ -56,5 +56,10 @@
             break;
         }//if
     }
+}
+
+-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    [self setUI];
 }
 @end
