@@ -9,18 +9,27 @@
 import UIKit
 
 var sizeOfSquare = 40
-var cols = Int(UIScreen.mainScreen().bounds.width / CGFloat(sizeOfSquare))
-var rows = Int(UIScreen.mainScreen().bounds.height / CGFloat(sizeOfSquare))
+var cols : Int = Int()
+var rows : Int = Int()
 
 class ViewController: UIViewController {
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUI()
+        //self.setUI()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        cols = Int(UIScreen.mainScreen().bounds.width / CGFloat(sizeOfSquare))
+        rows = Int(UIScreen.mainScreen().bounds.height / CGFloat(sizeOfSquare))
+        
+        self.setUI()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -66,6 +75,10 @@ class ViewController: UIViewController {
             }//for
         }//for
     }//touchesEnded
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator);
+    }
 
 }
 
